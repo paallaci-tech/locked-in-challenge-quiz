@@ -398,26 +398,6 @@
     margin:0 0 18px;
   }
 
-  .ggc-share-row{
-    text-align:center;
-    margin-top:16px;
-  }
-  .ggc-share-btn{
-    background:none;
-    border:1px solid var(--border-light);
-    color:var(--text-dim);
-    font-family:'Poppins',sans-serif;
-    font-size:12.5px;
-    font-weight:500;
-    padding:9px 16px;
-    border-radius:99px;
-    cursor:pointer;
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-  }
-  .ggc-share-btn:hover{ color:var(--text); border-color:var(--text-dim); }
-
   @media (max-width:380px){
     h1.ggc-title{font-size:22px;}
     h2.ggc-qtitle{font-size:18px;}
@@ -501,12 +481,6 @@
           <a class="ggc-btn ggc-btn-block" id="ggcCtaBtn" href="https://www.girlgainschallenge.hu/#jegyek" target="_top">Jelentkezem</a>
         </div>
 
-        <div class="ggc-share-row">
-          <button class="ggc-share-btn" id="ggcShareBtn" type="button">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
-            Megosztom az eredményem
-          </button>
-        </div>
       </section>
 
     </div>
@@ -938,24 +912,6 @@
     elBackBtn.classList.remove('show');
     showScreen(elResult);
   }
-
-  /* =========================================================
-     CTA / megosztás
-  ========================================================= */
-  document.getElementById('ggcShareBtn').addEventListener('click', function(){
-    var shareText = 'Kitöltöttem a Locked In Challenge kvízét, és megtudtam, miben tudna nekem a legtöbbet segíteni a Challenge. 💕';
-    var shareUrl = (window.top && window.top.location && window.top.location.href) ? window.top.location.href : window.location.href;
-    if (navigator.share){
-      navigator.share({ text: shareText, url: shareUrl }).catch(function(){});
-    } else if (navigator.clipboard){
-      navigator.clipboard.writeText(shareText + ' ' + shareUrl).then(function(){
-        var btn = document.getElementById('ggcShareBtn');
-        var original = btn.innerHTML;
-        btn.textContent = 'Vágólapra másolva!';
-        setTimeout(function(){ btn.innerHTML = original; }, 2000);
-      });
-    }
-  });
 
   /* =========================================================
      IFRAME AUTO-MAGASSÁG (postMessage a szülő oldalnak)
